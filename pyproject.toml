@@ -1,0 +1,35 @@
+[project]
+name = "trialmatch"
+version = "0.1.0"
+description = "Constrained, non-generative patient-to-clinical-trial eligibility reranker (LoRA + pointer head) trained on TREC Clinical Trials judgments"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.12"
+
+dependencies = [
+    "numpy>=2.0",
+    "scikit-learn>=1.5",
+    "torch>=2.6",
+    "transformers>=5.17,<6",
+    "peft>=0.21",
+    "pydantic>=2.9",
+    "accelerate>=1.0",
+    "huggingface-hub>=0.26",
+]
+
+[project.optional-dependencies]
+# Gated DeltaNet kernels. Required in practice: without them the Qwen3.5 backbone
+# falls back to reference PyTorch and training goes from hours to days.
+cuda = ["flash-linear-attention>=0.5"]
+train = ["wandb>=0.20"]
+dev = ["pytest>=8.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["trialmatch"]

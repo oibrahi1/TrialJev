@@ -1,0 +1,11 @@
+# SHA-256 of the processed datasets used for the reported runs (files are NOT in this repo;
+# rebuild them with build_data.py and verify with: sha256sum -c --ignore-missing data/DATA_MANIFEST.sha256 )
+fe0bcb356fcdf0a3e54e9727f62456d163dfa62b46c87da21e8e0a7674934411  data/tm-v1-b4096/train.jsonl
+222d12f11aa089ae305b75d8b02cb8280158e425ade91868517d49a7f12fe3cc  data/tm-v1-b4096/development.jsonl
+77644c6d88864a434e30d62a439c8c172ddef16ead5fbb880263dccff5e9f984  data/tm-v1-b4096/test.jsonl
+e0393af3a7bd7d65e56f6287048698178ac61bb47ae92746975ac8211652028c  data/tm-v1-b4096/stats.json
+888340e5f737bb71d23099ed0288349178a21510ff9cb379fb95b77c331fed8f  data/tm-v1-b2560/train.jsonl
+784b03ffef40389aa785dc6b49045c22cd3396e765df12c16ba011f89cbb20ef  data/tm-v1-b2560/development.jsonl
+7fb911e86a935a70379d8c70ec32f87eabe2aae81731f506e230cfcc9d477756  data/tm-v1-b2560/test.jsonl
+c7dc7675ab2ba6a110e44b7fe4e29278aff6bfb80ccc807ef34ee8791497974f  data/tm-v1-b2560/stats.json
+35767cdb7b0ac2c6f7e2fbfc1b759700fc202218e980e88620390f6af831e575  data/splits.json

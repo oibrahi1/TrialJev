@@ -1,0 +1,86 @@
+{
+  "max_state": 512,
+  "max_branch": 4096,
+  "instruction_budget": 3548,
+  "question": {
+    "id": "eligible",
+    "type": "noul",
+    "text": "Is this patient eligible for the clinical trial below? Eligible means every inclusion criterion is met and no exclusion criterion applies.",
+    "criteria": {
+      "true": "Eligible: meets the inclusion criteria and no exclusion criterion applies",
+      "false": "Excluded: an inclusion criterion is not met or an exclusion criterion applies"
+    }
+  },
+  "not_relevant_pairs_left_out_by_year": {
+    "2021": 24243,
+    "2022": 28419
+  },
+  "splits": {
+    "train": {
+      "records": 9302,
+      "excluded": 4954,
+      "trimmed": 29,
+      "eligible": 4348,
+      "trim:drop_KEYWORDS": 22,
+      "trim:drop_OFFICIAL TITLE": 25,
+      "trim:cut_SUMMARY": 7,
+      "quarantined": 44,
+      "trim:drop_SUMMARY": 14,
+      "trim:drop_INTERVENTIONS": 11,
+      "trim:cap_CONDITIONS": 1,
+      "trim:cut_ELIGIBILITY": 7,
+      "trim:cut_INTERVENTIONS": 2,
+      "patients": 60,
+      "branch_tokens": {
+        "n": 9302,
+        "min": 162,
+        "median": 668.0,
+        "p95": 1740,
+        "max": 3581
+      }
+    },
+    "development": {
+      "records": 2233,
+      "excluded": 1065,
+      "trimmed": 5,
+      "eligible": 1168,
+      "trim:drop_KEYWORDS": 4,
+      "trim:drop_OFFICIAL TITLE": 3,
+      "trim:cut_SUMMARY": 1,
+      "quarantined": 10,
+      "trim:drop_SUMMARY": 2,
+      "trim:drop_INTERVENTIONS": 2,
+      "trim:cut_ELIGIBILITY": 2,
+      "patients": 15,
+      "branch_tokens": {
+        "n": 2233,
+        "min": 150,
+        "median": 639,
+        "p95": 1700,
+        "max": 3580
+      }
+    },
+    "test": {
+      "records": 6975,
+      "excluded": 3036,
+      "trimmed": 6,
+      "eligible": 3939,
+      "suspect_flagged": 82,
+      "trim:drop_SUMMARY": 3,
+      "trim:drop_INTERVENTIONS": 1,
+      "trim:cut_ELIGIBILITY": 1,
+      "trim:drop_KEYWORDS": 4,
+      "trim:drop_OFFICIAL TITLE": 4,
+      "trim:cut_SUMMARY": 2,
+      "trim:cut_INTERVENTIONS": 2,
+      "patients": 50,
+      "branch_tokens": {
+        "n": 6975,
+        "min": 154,
+        "median": 636,
+        "p95": 1606,
+        "max": 3581
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "max_state": 512,
+  "max_branch": 2560,
+  "instruction_budget": 2012,
+  "question": {
+    "id": "eligible",
+    "type": "noul",
+    "text": "Is this patient eligible for the clinical trial below? Eligible means every inclusion criterion is met and no exclusion criterion applies.",
+    "criteria": {
+      "true": "Eligible: meets the inclusion criteria and no exclusion criterion applies",
+      "false": "Excluded: an inclusion criterion is not met or an exclusion criterion applies"
+    }
+  },
+  "not_relevant_pairs_left_out_by_year": {
+    "2021": 24243,
+    "2022": 28419
+  },
+  "splits": {
+    "train": {
+      "records": 9302,
+      "excluded": 4954,
+      "trimmed": 277,
+      "eligible": 4348,
+      "trim:drop_OFFICIAL TITLE": 239,
+      "trim:cut_SUMMARY": 50,
+      "trim:drop_KEYWORDS": 179,
+      "trim:drop_SUMMARY": 195,
+      "trim:drop_INTERVENTIONS": 151,
+      "trim:cut_ELIGIBILITY": 143,
+      "trim:cut_INTERVENTIONS": 24,
+      "trim:cap_CONDITIONS": 14,
+      "quarantined": 44,
+      "patients": 60,
+      "branch_tokens": {
+        "n": 9302,
+        "min": 162,
+        "median": 668.0,
+        "p95": 1730,
+        "max": 2048
+      }
+    },
+    "development": {
+      "records": 2233,
+      "excluded": 1065,
+      "trimmed": 65,
+      "eligible": 1168,
+      "trim:drop_KEYWORDS": 56,
+      "trim:drop_OFFICIAL TITLE": 57,
+      "trim:cut_SUMMARY": 18,
+      "trim:drop_SUMMARY": 42,
+      "trim:drop_INTERVENTIONS": 32,
+      "trim:cut_ELIGIBILITY": 31,
+      "trim:cut_INTERVENTIONS": 6,
+      "quarantined": 10,
+      "patients": 15,
+      "branch_tokens": {
+        "n": 2233,
+        "min": 150,
+        "median": 639,
+        "p95": 1700,
+        "max": 2046
+      }
+    },
+    "test": {
+      "records": 6975,
+      "excluded": 3036,
+      "trimmed": 131,
+      "eligible": 3939,
+      "trim:drop_KEYWORDS": 91,
+      "trim:drop_OFFICIAL TITLE": 108,
+      "trim:cut_SUMMARY": 36,
+      "suspect_flagged": 82,
+      "trim:drop_SUMMARY": 77,
+      "trim:drop_INTERVENTIONS": 55,
+      "trim:cut_ELIGIBILITY": 52,
+      "trim:cut_INTERVENTIONS": 8,
+      "trim:cap_CONDITIONS": 1,
+      "patients": 50,
+      "branch_tokens": {
+        "n": 6975,
+        "min": 154,
+        "median": 636,
+        "p95": 1598,
+        "max": 2048
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+TrialJev
+Copyright 2026 the TrialJev authors. Licensed under the Apache License, Version 2.0
+(see LICENSE).
+
+This software is a derivative work. The decision-model code in `trialmatch/` was taken
+from MedJev and modified for patient-to-clinical-trial eligibility:
+
+  * MedJev: Ultra-fast Clinical Variable Extraction from Free-text Notes
+    Copyright 2026 Jun Ma — https://github.com/JunMa11/MedJev — Apache-2.0
+  * kev (the typed decision-model architecture that MedJev derives from)
+    Copyright Jared Palmer — https://github.com/jaredpalmer/kev — Apache-2.0
+
+Files derived from these projects: trialmatch/api.py and model.py (only the package
+name in imports changed), records.py, checkpoint.py, train.py, evaluate.py, and
+scripts/prefinetune_probe.py (technique from MedJev's base_probe.py).
+
+Statement of changes (Apache-2.0 section 4(b)) relative to MedJev:
+  * trialmatch/train.py: question ids are read from the data instead of a fixed
+    clinical-variable list; `--init_from` (start from a released adapter + head, with
+    compatibility checks); `--base_dtype` (bf16 frozen backbone).
+  * trialmatch/evaluate.py: budgets default to the checkpoint's; per-pair predictions
+    (`eval-<split>-preds.jsonl`) are written; merged-LoRA only in fp32.
+  * trialmatch/checkpoint.py: explicit UTF-8; offline Hub-cache resolution.
+  * trialmatch/records.py: explicit UTF-8 file reading.
+  * New: build_data.py, build_trial_text.py, check_env.py, scripts/, tests/.
+  * Removed: MedJev's clinical-variable label builders, rule baseline, comparison and
+    serving demos, which are specific to its note-extraction task.
+
+Model weights are not included in this repository. Experiments start from:
+  * Qwen3.5 / Qwen3.8 base models — Alibaba Cloud / Qwen team, Apache-2.0 (verify the
+    license of the exact checkpoint you download).
+  * Optionally the MedJev-Qwen3.5-0.8B adapter + pointer head (junma/MedJev-Qwen3.5-0.8B,
+    Apache-2.0), used as the "clinical initialization".
+
+Data: the TREC Clinical Trials track topics and relevance judgments (NIST / TREC,
+https://www.trec-cds.org/) and ClinicalTrials.gov trial records are NOT redistributed
+here. Obtain them from their owners under their terms. See DATA.md.
