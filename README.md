@@ -199,7 +199,21 @@ redistributed.
 
 ## Citing
 
-If you use this work, please also cite the projects it builds on:
+If you use TrialJev, please cite:
+
+> Ibrahim O, Hamblin G, Haibe-Kains B. *TrialJev: Open-Weight Single-Pass Eligibility Scoring for
+> Patient–Trial Screening*. Preprint, 2026. https://github.com/oibrahi1/TrialJev
+
+```bibtex
+@misc{ibrahim2026trialjev,
+  title        = {TrialJev: Open-Weight Single-Pass Eligibility Scoring for Patient--Trial Screening},
+  author       = {Ibrahim, Omar and Hamblin, Grant and Haibe-Kains, Benjamin},
+  year         = {2026},
+  howpublished = {\url{https://github.com/oibrahi1/TrialJev}}
+}
+```
+
+Please also cite the projects it builds on:
 
 - **MedJev** — *MedJev: Ultra-fast Clinical Variable Extraction from Free-text Notes*, software v0.1.0, 2026.
   https://github.com/JunMa11/MedJev
