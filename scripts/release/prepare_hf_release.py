@@ -61,9 +61,10 @@ FRAMEWORK = {"small": "torch 2.14.0, transformers 5.17.0, peft 0.21.0, accelerat
              "large": "torch 2.14.0+cu130, transformers 5.17.0, peft 0.21.0, accelerate 1.15.0, flash-linear-attention 0.5.2 (H100 NVL, bf16 backbone)"}
 CITATION = """```bibtex
 @misc{ibrahim2026trialjev,
-  title  = {TrialJev: Fast Single-Pass Patient--Trial Eligibility Screening with Pointer-Head Language Models},
-  author = {Ibrahim, Omar},
+  title  = {TrialJev: Open-Weight Single-Pass Eligibility Scoring for Patient--Trial Screening},
+  author = {Ibrahim, Omar and Hamblin, Grant and Haibe-Kains, Benjamin},
   year   = {2026},
+  url    = {https://github.com/oibrahi1/TrialJev},
   note   = {Preprint; arXiv identifier to be added at posting}
 }
 ```
@@ -100,11 +101,12 @@ request = {"state": "<patient note>",
                                        "label": True, "src": "x"}}}      # the label is ignored when scoring
 enc = model.encode(tok, materialize(request), max_state=512, max_branch=4096)
 with torch.no_grad():
-    probs, _ = model.probs_and_prefix(enc)         # probs[0] = [P(excluded), P(eligible)]
+    probs = model.probs(enc)                       # one forward pass; probs[0] = [P(excluded), P(eligible)]
+    # probs, _ = model.probs_and_prefix(enc)       # two-pass path used for the paper's accuracies (accuracy differs by at most 0.09 points)
 print(float(probs[0][1]))
 ```
 The exact prompt serialization used in the manuscript (question wording, option text, trial sections) is in `docs/REPRODUCE.md` and `build_data.py` of the code repository.
-To reproduce a reported number, score a split with `python -m trialmatch.evaluate --run <path> --data <dir> --split <split> --dtype fp32`."""
+To reproduce a reported number, score a split with `python -m trialmatch.evaluate --run <path> --data <dir> --split <split> --dtype bf16` (use `--dtype fp32` for the 0.8B models, `bf16` for 9B and above)."""
 USAGE_SFT = """```python
 from huggingface_hub import snapshot_download
 local = snapshot_download("omareng/TrialJev-FineTunedLLM", allow_patterns=["SUB/*"])      # one sub-folder, not the whole repository
@@ -191,7 +193,7 @@ def card(fam, runs, metrics=None):
         m = (metrics or {}).get(run)
         fmt = lambda v, d: "n/a" if v is None else f"{v:.{d}f}"
         extra = f" {fmt(m['macro_f1'], 1)}% | {fmt(m['auroc'], 3)} | {fmt(m['brier'], 3)} | {fmt(m['ece'], 3)} |" if m else ""
-        rows.append(f"| `{sub}` | {desc} | {base} ({('revision `' + rev[:12] + '`') if len(rev) > 30 else 'revision ' + rev}) | {step} | {(m['accuracy'] if m else acc):.2f}% |{extra}")
+        rows.append(f"| `{sub}` | {desc} | {base} ({('revision `' + rev + '`') if len(rev) > 30 else 'revision ' + rev}) | {step} | {(m['accuracy'] if m else acc):.2f}% |{extra}")
     head = ("| Sub-folder | Configuration | Backbone (revision) | Step | Accuracy | Macro-F1 | AUROC | Brier | ECE |\n|---|---|---|---:|---:|---:|---:|---:|---:|\n"
             if metrics else "| Sub-folder | Configuration | Backbone (revision) | Step | Full-test accuracy |\n|---|---|---|---:|---:|\n")
     base_models = sorted({REG[r][1] for r in runs})
@@ -237,13 +239,13 @@ log, and `SHA256SUMS.txt` lists the checksum of every file.
 ## Training data
 
 TREC Clinical Trials 2021 patient cases and ClinicalTrials.gov records. The processed data are not redistributed because they derive from TREC topics and registry text; the code
-repository explains how to rebuild them and lists SHA-256 hashes. No real patient data were used.
+repository explains how to rebuild them and lists SHA-256 hashes. No institutional patient records were used.
 
 ## Limitations and intended use
 
 Research use only. One benchmark of 50 synthetic patients; pairs that assessors had already judged relevant (not retrieval); synthetic, short patient notes; no explanation or rationale
 is produced; the scores are not calibrated probabilities and a cutoff should be chosen on development data; one seed at 27B. `head.pt` is a PyTorch pickle holding the pointer-head
-tensors, the special-token embeddings and the training arguments; load it only from this repository. See the manuscript and `docs/RESULTS.md` in the code repository.
+tensors and small metadata; load it only from this repository. See the manuscript and `docs/RESULTS.md` in the code repository.
 
 ## Citation
 
