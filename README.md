@@ -1,6 +1,12 @@
-# TrialJev
+<h1 align="center">TrialJev</h1>
 
-*Paper: [arXiv:2611.10145](https://arxiv.org/abs/2611.10145). Python package: `trialmatch`. Trained weights: [Hugging Face](#pretrained-weights).*
+<p align="center">
+  <a href="https://arxiv.org/abs/2611.10145"><img src="https://img.shields.io/badge/paper-arXiv-blue?logo=arxiv&logoColor=white" alt="Paper"></a>
+  <a href="https://huggingface.co/omareng/TrialJev"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-omareng-yellow" alt="Hugging Face"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-green" alt="License: Apache-2.0"></a>
+</p>
+
+*Python package: `trialmatch`. Trained weights: [Hugging Face](#pretrained-weights).*
 
 **Fast, single-pass patient-to-clinical-trial eligibility screening with a pointer-head LLM.**
 
