@@ -1,6 +1,6 @@
 # TrialJev
 
-*Python package: `trialmatch`. Trained weights: [Hugging Face](#pretrained-weights).*
+*Paper: [arXiv:2611.10145](https://arxiv.org/abs/2611.10145). Python package: `trialmatch`. Trained weights: [Hugging Face](#pretrained-weights).*
 
 **Fast, single-pass patient-to-clinical-trial eligibility screening with a pointer-head LLM.**
 
@@ -202,14 +202,18 @@ redistributed.
 If you use TrialJev, please cite:
 
 > Ibrahim O, Hamblin G, Haibe-Kains B. *TrialJev: Open-Weight Single-Pass Eligibility Scoring for
-> Patient–Trial Screening*. Preprint, 2026. https://github.com/oibrahi1/TrialJev
+> Patient–Trial Screening*. arXiv:2611.10145, 2026. https://arxiv.org/abs/2611.10145
 
 ```bibtex
 @misc{ibrahim2026trialjev,
-  title        = {TrialJev: Open-Weight Single-Pass Eligibility Scoring for Patient--Trial Screening},
-  author       = {Ibrahim, Omar and Hamblin, Grant and Haibe-Kains, Benjamin},
-  year         = {2026},
-  howpublished = {\url{https://github.com/oibrahi1/TrialJev}}
+  title         = {TrialJev: Open-Weight Single-Pass Eligibility Scoring for Patient--Trial Screening},
+  author        = {Ibrahim, Omar and Hamblin, Grant and Haibe-Kains, Benjamin},
+  year          = {2026},
+  eprint        = {2611.10145},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2611.10145},
+  howpublished  = {Code: \url{https://github.com/oibrahi1/TrialJev}}
 }
 ```
 

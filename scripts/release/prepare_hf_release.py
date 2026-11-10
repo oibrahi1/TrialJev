@@ -61,11 +61,14 @@ FRAMEWORK = {"small": "torch 2.14.0, transformers 5.17.0, peft 0.21.0, accelerat
              "large": "torch 2.14.0+cu130, transformers 5.17.0, peft 0.21.0, accelerate 1.15.0, flash-linear-attention 0.5.2 (H100 NVL, bf16 backbone)"}
 CITATION = """```bibtex
 @misc{ibrahim2026trialjev,
-  title  = {TrialJev: Open-Weight Single-Pass Eligibility Scoring for Patient--Trial Screening},
-  author = {Ibrahim, Omar and Hamblin, Grant and Haibe-Kains, Benjamin},
-  year   = {2026},
-  url    = {https://github.com/oibrahi1/TrialJev},
-  note   = {Preprint; arXiv identifier to be added at posting}
+  title         = {TrialJev: Open-Weight Single-Pass Eligibility Scoring for Patient--Trial Screening},
+  author        = {Ibrahim, Omar and Hamblin, Grant and Haibe-Kains, Benjamin},
+  year          = {2026},
+  eprint        = {2611.10145},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2611.10145},
+  note          = {Code: https://github.com/oibrahi1/TrialJev}
 }
 ```
 Please also cite the work this builds on: MedJev (https://github.com/JunMa11/MedJev) and kev (https://github.com/jaredpalmer/kev)."""

@@ -9,4 +9,18 @@ authors:
   - family-names: Haibe-Kains
     given-names: Benjamin
 repository-code: "https://github.com/oibrahi1/TrialJev"
+url: "https://arxiv.org/abs/2611.10145"
 license: Apache-2.0
+preferred-citation:
+  type: article
+  title: "TrialJev: Open-Weight Single-Pass Eligibility Scoring for Patient–Trial Screening"
+  authors:
+    - family-names: Ibrahim
+      given-names: Omar
+    - family-names: Hamblin
+      given-names: Grant
+    - family-names: Haibe-Kains
+      given-names: Benjamin
+  journal: "arXiv preprint arXiv:2611.10145"
+  year: 2026
+  url: "https://arxiv.org/abs/2611.10145"
